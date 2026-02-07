@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Move")]
     public float moveSpeed = 6f;
 
+    [Header("Rotation")]
+    public float rotationSpeed = 10f;
+
     [Header("Jump")]
     public float jumpForce = 7f;
 
@@ -49,11 +52,19 @@ public class PlayerMovement : MonoBehaviour
 
             anim.SetTrigger("Jump");
         }
+        if (isMoving)
+        {
+            Vector3 moveDir = new Vector3(h, 0f, v).normalized;
+
+            Quaternion targetRot = Quaternion.LookRotation(moveDir);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+        }
     }
 
     void FixedUpdate()
     {
-        Vector3 moveDir = (transform.forward * v + transform.right * h).normalized;
+        Vector3 moveDir = new Vector3(h, 0f, v).normalized;
 
         Vector3 moveVelocity = moveDir * moveSpeed;
         rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
