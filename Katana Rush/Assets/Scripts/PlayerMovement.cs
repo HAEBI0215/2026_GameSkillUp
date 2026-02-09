@@ -6,6 +6,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Move")]
     public float moveSpeed = 6f;
 
+    public AudioSource audioSource;
+    public AudioClip[] footstepClips;
+
+    [Range(0f, 1f)]
+    public float footstepVolume = 0.8f;
+
     [Header("Rotation")]
     public float rotationSpeed = 10f;
 
@@ -31,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         anim = GetComponent<Animator>();
+        AudioClip clip = GetComponent<AudioClip>();
     }
 
     void Update()
@@ -72,11 +79,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void FootR()
     {
-        
+        PlayFootstep();
     }
-
     public void FootL()
     {
-        
+        PlayFootstep();
+    }
+    void PlayFootstep()
+    {
+        if (audioSource == null) return;
+        if (footstepClips.Length == 0) return;
+
+        AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
+        audioSource.PlayOneShot(clip, footstepVolume);
     }
 }
