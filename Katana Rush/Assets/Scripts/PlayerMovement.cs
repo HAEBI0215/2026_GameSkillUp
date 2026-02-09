@@ -8,9 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip[] footstepClips;
+    public AudioClip jumpClip;
 
     [Range(0f, 1f)]
     public float footstepVolume = 0.8f;
+    [Range(0f, 1f)]
+    public float jumpVolume = 1f;
 
     [Header("Rotation")]
     public float rotationSpeed = 10f;
@@ -58,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             anim.SetTrigger("Jump");
+            PlayJumpSound();
         }
         if (isMoving)
         {
@@ -92,5 +96,12 @@ public class PlayerMovement : MonoBehaviour
 
         AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
         audioSource.PlayOneShot(clip, footstepVolume);
+    }
+    void PlayJumpSound()
+    {
+        if (audioSource == null) return;
+        if (jumpClip == null) return;
+
+        audioSource.PlayOneShot(jumpClip, jumpVolume);
     }
 }
