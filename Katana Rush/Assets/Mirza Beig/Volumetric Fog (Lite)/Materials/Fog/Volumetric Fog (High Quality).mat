@@ -145,7 +145,7 @@ Material:
     - _Curl_Strength_Raymarch_Offset: 2
     - _Curl_Strength_Raymarch_Sample: 0.2
     - _Cutoff: 0.5
-    - _Density: 0.2
+    - _Density: 0.05
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -180,7 +180,7 @@ Material:
     - _Main_Light_Anisotropic_Blend: 0.8
     - _Main_Light_Anisotropy: -0.23
     - _Main_Light_Anisotropy_Blend: 0.68
-    - _Main_Light_Intensity: 0.13
+    - _Main_Light_Intensity: 0.27
     - _Main_Light_Self_Shadow_Absorption_Coefficient: 0.5
     - _Main_Light_Self_Shadow_Raymarch_Distance: 5
     - _Main_Light_Self_Shadow_Raymarch_Steps: 8
@@ -211,7 +211,7 @@ Material:
     - _Raymarch_Steps: 128
     - _ReceiveShadows: 1
     - _Remap_Max: 1
-    - _Remap_Min: 0
+    - _Remap_Min: 0.23
     - _SIMPLEX_NOISE_ENABLED: 1
     - _SOFT_SHADOWS: 1
     - _Scale: 1.8
