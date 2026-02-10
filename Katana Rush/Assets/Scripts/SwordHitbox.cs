@@ -5,6 +5,9 @@ public class SwordHitbox : MonoBehaviour
 {
     public int damage = 10;
 
+    public GameObject impactVFX;
+    public float destroyTime = 1f;
+
     private Collider col;
 
     private HashSet<GameObject> hitEnemies = new HashSet<GameObject>();
@@ -38,6 +41,13 @@ public class SwordHitbox : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
+        }
+        if (impactVFX != null)
+        {
+            UnityEngine.Debug.Log("VFX");
+            Vector3 hitPos = other.ClosestPoint(transform.position);
+            GameObject vfx = Instantiate(impactVFX, hitPos, Quaternion.identity);
+            Destroy(vfx, destroyTime);
         }
     }
 }
