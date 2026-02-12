@@ -39,7 +39,6 @@ public class EnemyVision : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, player.position);
 
-            // 장애물 검사 (벽 있으면 안보임)
             if (!Physics.Raycast(transform.position + Vector3.up, dirToPlayer, distance, obstacleLayer))
             {
                 enemy.isAware = true;

@@ -104,6 +104,7 @@ public class EnemyAI : MonoBehaviour
         if (enemy.isAware)
         {
             lastSeenTime = Time.time;
+            anim.SetBool("isRun", true);
         }
 
         if (Time.time - lastSeenTime > loseTargetTime)
@@ -211,5 +212,13 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = true;
         anim.SetTrigger("Die");
         ChangeState(EnemyState.Dead);
+    }
+    public void FootR()
+    {
+
+    }
+    public void FootL()
+    {
+
     }
 }

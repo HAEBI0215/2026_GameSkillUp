@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private bool isDead;
 
     [Header("State")]
-    public bool isAware = false; // 플레이어 인식 여부
+    public bool isAware = false;
 
     void Start()
     {
@@ -41,7 +41,6 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            // 맞았으니까 이제 인식하게 만들기
             isAware = true;
         }
     }
@@ -51,7 +50,6 @@ public class Enemy : MonoBehaviour
         isDead = true;
         Debug.Log("Enemy Dead");
 
-        // TODO: 애니메이션/콜라이더/드랍 등
         Destroy(gameObject, 2f);
     }
 }
