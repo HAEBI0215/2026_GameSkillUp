@@ -42,7 +42,6 @@ public class EnemyVision : MonoBehaviour
             if (!Physics.Raycast(transform.position + Vector3.up, dirToPlayer, distance, obstacleLayer))
             {
                 enemy.isAware = true;
-                Debug.Log("Player Detected!");
                 return;
             }
         }

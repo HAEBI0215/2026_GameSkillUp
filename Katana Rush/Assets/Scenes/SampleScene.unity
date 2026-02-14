@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 173827850}
   - component: {fileID: 172828106}
   - component: {fileID: 175094538}
-  - component: {fileID: 175094537}
+  - component: {fileID: 175094539}
   m_Layer: 0
   m_Name: Weapon25
   m_TagString: Untagged
@@ -312,19 +312,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &175094537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175094536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f75e80d800344a40880d3fe996d77f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
 --- !u!65 &175094538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -346,6 +333,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.23586005, y: 0.5524426, z: 2.2208738}
   m_Center: {x: -0.012040281, y: 0.0000003126034, z: 0.16218315}
+--- !u!114 &175094539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175094536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd2a5f2f212ace4c848db4ad16ee7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  impactVFX: {fileID: 0}
+  destroyTime: 1
 --- !u!1001 &298965987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -979,6 +981,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81bb9eea30387e442899949a80011e55,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1502172563930301691, guid: 81bb9eea30387e442899949a80011e55,
         type: 3}
       propertyPath: m_IsActive
@@ -1152,7 +1159,7 @@ PrefabInstance:
     - target: {fileID: 7855633141151207076, guid: 09e7e195f122b804681c1bd2565abc18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.4848001
+      value: -3.03
       objectReference: {fileID: 0}
     - target: {fileID: 7855633141151207076, guid: 09e7e195f122b804681c1bd2565abc18,
         type: 3}
@@ -1229,6 +1236,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7855633141151207080, guid: 09e7e195f122b804681c1bd2565abc18,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1341981266}
+    - targetCorrespondingSourceObject: {fileID: 7855633141151207080, guid: 09e7e195f122b804681c1bd2565abc18,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1341981252}
     - targetCorrespondingSourceObject: {fileID: 7855633141151207080, guid: 09e7e195f122b804681c1bd2565abc18,
         type: 3}
@@ -1265,8 +1276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636b378d2e3191d4b97ddfe8ac4b7fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 10
-  viewAngle: 90
+  viewDistance: 20
+  viewAngle: 150
   playerLayer:
     serializedVersion: 2
     m_Bits: 131072
@@ -1285,7 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f807cb7b73b4d043833d26ebf189f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 150
   currentHp: 0
   backAttackMultiplier: 1.5
   isAware: 0
@@ -1373,9 +1384,10 @@ MonoBehaviour:
   attackRange: 2
   chaseRange: 12
   attackCooldown: 1.5
-  attackHitbox: {fileID: 0}
-  hitboxOnTime: 0.2
+  attackHitbox: {fileID: 175094539}
+  hitboxActiveDuration: 0.5
   loseTargetTime: 10
+  attackDuration: 1
 --- !u!195 &1341981263
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1398,6 +1410,26 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1341981266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465989314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279441ae41f80ef429109c262aa3217d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1341981261}
+  swords:
+  - {fileID: 175094539}
+  attackCooldown: 0.6
+  hitboxOnTime: 0.15
+  hitboxOffTime: 0.35
+  hitVFX: {fileID: 0}
+  hitPoint: {fileID: 0}
 --- !u!1 &1411771841
 GameObject:
   m_ObjectHideFlags: 0
